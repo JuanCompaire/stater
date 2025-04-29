@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:latest
+    container_name: stater-db
+    environment:
+      POSTGRES_DB: db_stater
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - spring-boot-network
+
+volumes:
+  pgdata:
+
+networks:
+  spring-boot-network:
+    driver: bridge
