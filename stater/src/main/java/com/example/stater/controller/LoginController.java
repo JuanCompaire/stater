@@ -1,5 +1,8 @@
 package com.example.stater.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,17 +21,20 @@ public class LoginController {
     @Autowired
     private LoginService service;
 
-    @PostMapping("/login")//EndPoint --> /api/auth/login
-    public ResponseEntity<String> login(@RequestBody LoginRequest loginRequest){
-
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
         Boolean result = service.login(loginRequest.getPassword());
-        System.out.println("El result del Controler es : "+result);
+        System.out.println("El result del Controller es : " + result);
+
         if (result) {
-        // Si el login es exitoso, devuelve un código 200 con un mensaje
-        return ResponseEntity.ok("Login realizado correctamente");
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Login realizado correctamente");
+            return ResponseEntity.ok(response);
         } else {
-            // Si el login falla, devuelve un código 401 con un mensaje de error
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Error en el login");
+            Map<String, String> error = new HashMap<>();
+            error.put("error", "Error en el login");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(error);
         }
     }
 }
+
