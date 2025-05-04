@@ -5,13 +5,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoginService {
 
-    public boolean login(String password){
-        System.out.println("Passowrd : "+password);
-        if(password.equals("SZKlolito")){
+    public boolean login(String password) {
+        System.out.println("Password : " + password);
+        // Lógica de validación de contraseña
+        if ("SZKlolito".equals(password)) { // Contraseña correcta
             return true;
-        }
-        else{
-            System.out.println("False en el LoginService");
+        } else {
+            // Contraseña incorrecta
+            System.out.println("Contraseña incorrecta");
             return false;
         }
     }

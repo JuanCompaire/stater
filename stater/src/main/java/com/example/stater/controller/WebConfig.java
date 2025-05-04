@@ -7,20 +7,25 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig implements WebMvcConfigurer{
+public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/static/");
+                .addResourceLocations("classpath:/static/stater-front/browser/");
     }
 
-     @Override
+    @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/index.html");
+        registry.addViewController("/{spring:[\\w\\-]+}")
+                .setViewName("forward:/index.html");
+        registry.addViewController("/**/{spring:[\\w\\-]+}")
+                .setViewName("forward:/index.html");
+        registry.addViewController("/")
+                .setViewName("forward:/index.html");
     }
 
-     @Override
+    @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins("http://localhost:4200")
@@ -28,5 +33,4 @@ public class WebConfig implements WebMvcConfigurer{
                 .allowedHeaders("*")
                 .allowCredentials(true);
     }
-    
 }
