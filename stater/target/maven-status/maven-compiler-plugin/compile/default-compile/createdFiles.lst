@@ -1,0 +1,13 @@
+com\example\stater\DTO\MatchDTO$PlayerKDA.class
+com\example\stater\DTO\MapStatsDTO$SiteStats.class
+com\example\stater\service\LoginService.class
+com\example\stater\service\MatchService.class
+com\example\stater\controller\WebConfig.class
+com\example\stater\entity\Match.class
+com\example\stater\DTO\LoginRequest.class
+com\example\stater\StaterApplication.class
+com\example\stater\DTO\MatchDTO.class
+com\example\stater\controller\MatchController.class
+com\example\stater\DTO\MapStatsDTO.class
+com\example\stater\controller\LoginController.class
+com\example\stater\repository\MatchRepository.class
