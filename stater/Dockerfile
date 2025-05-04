@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia el jar compilado al contenedor
-COPY target/stater-0.0.1-SNAPSHOT.jar
+COPY target/stater-0.0.1-SNAPSHOT.jar app.jar
 
 # Expón el puerto que usará la app
 EXPOSE 8080
